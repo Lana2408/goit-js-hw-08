@@ -23,9 +23,10 @@ function onFormSubmit(evt) {
 
       console.log(dataForm);
 
-    evt.target.reset(); 
+ 
     localStorage.removeItem('feedback-message');
     dataForm = {}
+        evt.target.reset();
 
 }
 
@@ -42,11 +43,11 @@ function populateTextarea() {
     const savedMessage = localStorage.getItem('feedback-message');
     if (!savedMessage) return;
 
-    const savedDataForm = JSON.parse(savedMessage);
+    dataForm = JSON.parse(savedMessage);
     
 
-    if (savedDataForm.email) form.elements.email.value = savedDataForm.email;
-    if (savedDataForm.message) form.elements.message.value = savedDataForm.message;
+    if (dataForm.email) form.elements.email.value = dataForm.email;
+    if (dataForm.message) form.elements.message.value = dataForm.message;
   }
 
   populateTextarea();
